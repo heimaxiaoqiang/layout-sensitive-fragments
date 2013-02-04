@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Layout Sensitive Fragments</string>
+    <string name="textView_fragAlwaysThere_idText_string">AlwaysThere Fragment</string>
+    <string name="textView_fragLandscape_idText_string">Landscape Fragment</string>
 </resources>
