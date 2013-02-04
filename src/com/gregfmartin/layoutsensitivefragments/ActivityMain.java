@@ -13,6 +13,7 @@ package com.gregfmartin.layoutsensitivefragments;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,5 +31,37 @@ public class ActivityMain extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_main);
+
+        configureFragments();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        configureFragments();
+    }
+
+    private void configureFragments() {
+        FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
+        FragmentAlwaysThere fragAlwaysThere = new FragmentAlwaysThere();
+
+        // Check to see if particular containers exists in the Layout
+        if(findViewById(R.id.frameLayout_fragLandscapeContainer) != null) {
+            // Landscape orientation
+            FragmentLandscape fragLandscape = new FragmentLandscape();
+
+            // Add the Fragments to the Activity
+            fragTransaction.add(R.id.frameLayout_fragLandscapeContainer, fragLandscape, "fragLandscape");
+            fragTransaction.add(R.id.frameLayout_fragAlwaysThereContainer, fragAlwaysThere, "fragAlwaysThere");
+            fragTransaction.commit();
+        } else if(findViewById(R.id.frameLayout_fragmentContainer) != null) {
+            // Portrait
+            fragTransaction.add(R.id.frameLayout_fragmentContainer, fragAlwaysThere, "fragAlwaysThere");
+            fragTransaction.commit();
+        }
     }
 }
