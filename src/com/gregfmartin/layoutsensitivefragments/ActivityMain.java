@@ -45,6 +45,11 @@ public class ActivityMain extends FragmentActivity {
         configureFragments();
     }
 
+    /**
+     * Handles the FragmentTransaction responsible for injecting the appropriate Fragments into the layout.
+     * If the device is in Landscape orientation, both Fragments are displayed side-by-side. If the device
+     * is in Portrait orientation, a single Fragment is displayed.
+     */
     private void configureFragments() {
         FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
         FragmentAlwaysThere fragAlwaysThere = new FragmentAlwaysThere();
