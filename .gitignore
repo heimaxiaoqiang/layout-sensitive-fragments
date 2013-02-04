@@ -1,0 +1,6 @@
+*.apk
+*.dex
+*.iml
+bin/*
+.idea/*
+out/*
