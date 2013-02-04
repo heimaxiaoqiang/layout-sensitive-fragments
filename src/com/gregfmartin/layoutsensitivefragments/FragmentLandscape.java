@@ -30,6 +30,22 @@ import android.view.ViewGroup;
  */
 public class FragmentLandscape extends Fragment {
     /**
+     * Returns a new instance of FragmentLandscape within a static context
+     *
+     * @param position
+     * @return
+     */
+    static FragmentLandscape newInstance(int position) {
+        FragmentLandscape fragLandscape = new FragmentLandscape();
+        Bundle args = new Bundle();
+
+        args.putInt("position", position);
+        fragLandscape.setArguments(args);
+
+        return fragLandscape;
+    }
+
+    /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null (which
      * is the default implementation).  This will be called between

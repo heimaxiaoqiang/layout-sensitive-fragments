@@ -14,12 +14,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:id="@+id/frameLayout_fragmentContainer">
-    </FrameLayout>
+    <android.support.v4.view.ViewPager android:id="@+id/viewPager_aMain_fragmentPager"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>

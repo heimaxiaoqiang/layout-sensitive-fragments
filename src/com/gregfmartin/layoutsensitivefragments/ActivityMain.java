@@ -14,6 +14,7 @@ package com.gregfmartin.layoutsensitivefragments;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,12 +26,20 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class ActivityMain extends FragmentActivity {
     /**
+     * Holds the Fragments that are shown in Portrait mode
+     */
+    private FragmentPager mPortraitPager;
+
+    /**
      * Perform initialization of all fragments and loaders.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_main);
+
+        // Instantiate the Pager with the SupportFragmentManager
+        mPortraitPager = new FragmentPager(getSupportFragmentManager());
 
         configureFragments();
     }
@@ -63,10 +72,10 @@ public class ActivityMain extends FragmentActivity {
             fragTransaction.add(R.id.frameLayout_fragLandscapeContainer, fragLandscape, "fragLandscape");
             fragTransaction.add(R.id.frameLayout_fragAlwaysThereContainer, fragAlwaysThere, "fragAlwaysThere");
             fragTransaction.commit();
-        } else if(findViewById(R.id.frameLayout_fragmentContainer) != null) {
-            // Portrait
-            fragTransaction.add(R.id.frameLayout_fragmentContainer, fragAlwaysThere, "fragAlwaysThere");
-            fragTransaction.commit();
+        } else if(findViewById(R.id.viewPager_aMain_fragmentPager) != null) {
+            // Changed to pack the Fragments into the ViewPager
+            ViewPager fragmentPager = (ViewPager)findViewById(R.id.viewPager_aMain_fragmentPager);
+            fragmentPager.setAdapter(mPortraitPager);
         }
     }
 }

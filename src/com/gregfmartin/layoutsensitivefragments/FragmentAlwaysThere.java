@@ -27,6 +27,22 @@ import android.view.ViewGroup;
  */
 public class FragmentAlwaysThere extends Fragment {
     /**
+     * Returns a new FragmentAlwaysThere instance in a static context.
+     *
+     * @param position
+     * @return
+     */
+    static FragmentAlwaysThere newInstance(int position) {
+        FragmentAlwaysThere fragAlwaysThere = new FragmentAlwaysThere();
+        Bundle args = new Bundle();
+
+        args.putInt("position", position);
+        fragAlwaysThere.setArguments(args);
+
+        return fragAlwaysThere;
+    }
+
+    /**
      * Called to have the fragment instantiate its user interface view.
      * This is optional, and non-graphical fragments can return null (which
      * is the default implementation).  This will be called between
